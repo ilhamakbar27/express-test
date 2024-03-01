@@ -45,6 +45,7 @@ class Controller {
         try {
             const id = req.params.id
             await Buku.destroy({where: {id}})
+              
             res.status(200).json({message: 'Buku berhasil dihapus'})
         } catch (error) {
             next(error)

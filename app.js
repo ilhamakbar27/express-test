@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const Controller = require('./controller/controller')
-
+const errorHandler = require('./middleware/errorHandler')
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
