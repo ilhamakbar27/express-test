@@ -7,7 +7,7 @@ const errorHandler = require('./middleware/errorHandler')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
+app.get('/', Controller.getbooks);
 app.get('/buku', Controller.getbooks);
 app.get('/buku/:id', Controller.getBookById);
 app.post('/buku', Controller.postbooks);
