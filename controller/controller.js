@@ -42,15 +42,20 @@ class Controller {
         }
      }
      static async deletebooks(req, res, next) {
-        try {
-            const id = req.params.id
-            await Buku.destroy({where: {id}})
-              
-            res.status(200).json({message: 'Buku berhasil dihapus'})
-        } catch (error) {
-            next(error)
-        }
-     }
+      try {
+          const id = req.params.id
+          const book = await Buku.findOne({where: {id}})
+          
+          if(!book) {
+              throw {name: 'NotFound'}
+          }
+  
+          await Buku.destroy({where: {id}})
+          res.status(200).json({message: 'Buku berhasil dihapus'})
+      } catch (error) {
+          next(error)
+      }
+  }
 }
 
 module.exports = Controller
