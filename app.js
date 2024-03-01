@@ -14,6 +14,8 @@ app.post('/buku', Controller.postbooks);
 app.put('/buku/:id', Controller.editbooks);
 app.delete('/buku/:id', Controller.deletebooks);
 
+app.use(errorHandler);
+
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
